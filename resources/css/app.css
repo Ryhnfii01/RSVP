@@ -1,0 +1,421 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-serif: 'Playfair Display', serif;
+    --font-script: 'Dancing Script', cursive;
+
+    --color-primary-50: #f0f9ff;
+    --color-primary-100: #e0f2fe;
+    --color-primary-200: #bae6fd;
+    --color-primary-300: #7dd3fc;
+    --color-primary-400: #38bdf8;
+    --color-primary-500: #0ea5e9;
+    --color-primary-600: #0284c7;
+    --color-primary-700: #0369a1;
+    --color-primary-800: #075985;
+    --color-primary-900: #0c4a6e;
+
+    --color-gold-50: #fefce8;
+    --color-gold-100: #fef9c3;
+    --color-gold-200: #fef08a;
+    --color-gold-300: #fde047;
+    --color-gold-400: #facc15;
+    --color-gold-500: #eab308;
+    --color-gold-600: #ca8a04;
+    --color-gold-700: #a16207;
+    --color-gold-800: #854d0e;
+    --color-gold-900: #713f12;
+
+    /* Template 3 - Nature/Earthy Colors */
+    --color-brown-50: #f5f1e8;
+    --color-brown-100: #e2dbcb;
+    --color-brown-200: #d4c6ab;
+    --color-brown-300: #c5af89;
+    --color-brown-400: #b8976b;
+    --color-brown-500: #a67c52;
+    --color-brown-600: #8b6239;
+    --color-brown-700: #6b4423;
+    --color-brown-800: #594423;
+    --color-brown-900: #3d2f1f;
+
+    --color-cream-50: #fdfcfa;
+    --color-cream-100: #f9f6f0;
+    --color-cream-200: #f5f1e8;
+    --color-cream-300: #f0ebe0;
+    --color-cream-400: #e8dfc8;
+    --color-cream-500: #e2dbcb;
+    --color-cream-600: #d4a574;
+    --color-cream-700: #c69555;
+    --color-cream-800: #b8864d;
+    --color-cream-900: #a67c52;
+}
+
+@layer base {
+    body {
+        @apply font-sans antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-serif;
+    }
+}
+
+@layer utilities {
+    .text-gradient {
+        @apply bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent;
+    }
+
+    .glass {
+        @apply bg-white/10 backdrop-blur-md border border-white/20;
+    }
+}
+
+/* Custom Animations for Aesthetic Backgrounds */
+@keyframes gradient-shift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    33% {
+        transform: translateY(-20px) translateX(10px);
+    }
+    66% {
+        transform: translateY(-10px) translateX(-10px);
+    }
+}
+
+@keyframes float-slow {
+    0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-30px) translateX(15px) rotate(5deg);
+    }
+}
+
+@keyframes float-reverse {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    33% {
+        transform: translateY(20px) translateX(-10px);
+    }
+    66% {
+        transform: translateY(10px) translateX(10px);
+    }
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes pulse-soft {
+    0%, 100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes slide-down {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes rotate-slow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes ken-burns {
+    0% {
+        transform: scale(1) translate(0, 0);
+    }
+    50% {
+        transform: scale(1.1) translate(-2%, -2%);
+    }
+    100% {
+        transform: scale(1) translate(0, 0);
+    }
+}
+
+@keyframes blob {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in-down {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fade-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes zoom-in {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 15s ease infinite;
+}
+
+.animate-ken-burns {
+    animation: ken-burns 30s ease-in-out infinite;
+}
+
+.animate-blob {
+    animation: blob 7s ease-in-out infinite;
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+.animation-delay-6000 {
+    animation-delay: 6s;
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+    animation: float-reverse 7s ease-in-out infinite;
+}
+
+.animate-twinkle {
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+    animation: pulse-soft 4s ease-in-out infinite;
+}
+
+.animate-slide-down {
+    animation: slide-down 0.5s ease-out;
+}
+
+.animate-slide-up {
+    animation: slide-up 0.5s ease-out;
+}
+
+.animate-fade-in {
+    animation: fade-in 1s ease-out;
+}
+
+.animate-rotate-slow {
+    animation: rotate-slow 20s linear infinite;
+}
+
+/* Scroll-triggered animations */
+.animate-on-scroll {
+    opacity: 0;
+}
+
+.animate-on-scroll.animated {
+    animation-duration: 0.8s;
+    animation-fill-mode: both;
+}
+
+.animate-on-scroll[data-animation="fade-in-up"].animated {
+    animation-name: fade-in-up;
+}
+
+.animate-on-scroll[data-animation="fade-in-down"].animated {
+    animation-name: fade-in-down;
+}
+
+.animate-on-scroll[data-animation="fade-in-left"].animated {
+    animation-name: fade-in-left;
+}
+
+.animate-on-scroll[data-animation="fade-in-right"].animated {
+    animation-name: fade-in-right;
+}
+
+.animate-on-scroll[data-animation="zoom-in"].animated {
+    animation-name: zoom-in;
+}
+
+/* Stagger animation delays for children */
+.stagger-animation > * {
+    opacity: 0;
+}
+
+.stagger-animation.animated > *:nth-child(1) {
+    animation: fade-in-up 0.6s ease forwards;
+    animation-delay: 0.1s;
+}
+
+.stagger-animation.animated > *:nth-child(2) {
+    animation: fade-in-up 0.6s ease forwards;
+    animation-delay: 0.2s;
+}
+
+.stagger-animation.animated > *:nth-child(3) {
+    animation: fade-in-up 0.6s ease forwards;
+    animation-delay: 0.3s;
+}
+
+.stagger-animation.animated > *:nth-child(4) {
+    animation: fade-in-up 0.6s ease forwards;
+    animation-delay: 0.4s;
+}
+
+.stagger-animation.animated > *:nth-child(5) {
+    animation: fade-in-up 0.6s ease forwards;
+    animation-delay: 0.5s;
+}
+
+.stagger-animation.animated > *:nth-child(6) {
+    animation: fade-in-up 0.6s ease forwards;
+    animation-delay: 0.6s;
+}
+
+.stagger-animation.animated > *:nth-child(n+7) {
+    animation: fade-in-up 0.6s ease forwards;
+    animation-delay: 0.7s;
+}
+
+/* Parallax effect */
+.parallax {
+    transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+/* Fade in animation variants */
+.animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out;
+}
+
+.animate-fade-in-down {
+    animation: fade-in-down 0.8s ease-out;
+}
+
+.animate-fade-in-left {
+    animation: fade-in-left 0.8s ease-out;
+}
+
+.animate-fade-in-right {
+    animation: fade-in-right 0.8s ease-out;
+}
+
+.animate-zoom-in {
+    animation: zoom-in 0.8s ease-out;
+}
